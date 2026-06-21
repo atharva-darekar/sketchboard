@@ -1,0 +1,89 @@
+/* ── Text editing textarea ───────────────────────────────────────────────── */
+.textElementBox {
+  position: fixed;
+  border: none;
+  background: transparent;
+  resize: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  min-width: 4px;
+  height: auto;
+  overflow: hidden;
+  font-family: "Caveat", cursive;
+  /* Match canvas rendering exactly — see Board.jsx TEXT case */
+  line-height: 1.25;
+  white-space: pre; /* preserve newlines, no auto-wrap */
+  word-break: normal;
+  tab-size: 4;
+}
+
+/* ── Cursors ─────────────────────────────────────────────────────────────── */
+.eraserCanvas {
+  cursor: none;
+}
+
+.panCanvas {
+  cursor: grab;
+}
+
+.panningCanvas {
+  cursor: grabbing;
+}
+
+.selectCanvas {
+  cursor: default;
+}
+
+/* ── Eraser SVG overlay ──────────────────────────────────────────────────── */
+.eraserOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.eraserTrail {
+  fill: none;
+  stroke: rgba(59, 130, 246, 0.22);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.eraserCursorFill {
+  fill: rgba(59, 130, 246, 0.12);
+}
+
+.eraserCursorRing {
+  fill: none;
+  stroke: rgba(37, 99, 235, 0.95);
+  stroke-width: 1.5;
+}
+
+/* ── Selection SVG overlay ───────────────────────────────────────────────── */
+.selectionOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.selectionBox {
+  fill: none;
+  stroke: #7c3aed;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 3;
+  stroke-dashoffset: 0;
+}
+
+.resizeHandle {
+  fill: #ffffff;
+  stroke: #7c3aed;
+  stroke-width: 1.5;
+  rx: 2;
+}
