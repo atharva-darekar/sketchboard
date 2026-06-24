@@ -1,0 +1,35 @@
+services:
+  backend:
+    build: ./backend
+    container_name: sketchboard-backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - sketchboard-network
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: sketchboard-caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+    networks:
+      - sketchboard-network
+
+networks:
+  sketchboard-network:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
